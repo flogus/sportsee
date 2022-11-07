@@ -10,9 +10,11 @@ const data = [
 
 function graphPie()  {
     return (
-      <PieChart width={730} height={250}>
-        <Pie data={data} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={50} fill="#8884d8" />
-      </PieChart>
+      <ResponsiveContainer width={200} height={200}>
+        <PieChart width={200} height={250}>
+          <Pie data={data} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={50} fill="#8884d8" />
+        </PieChart>
+      </ResponsiveContainer>
     );
 }
 

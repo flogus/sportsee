@@ -41,7 +41,7 @@ const data = [
 ];
 function graphRadar()  {
     return (
-        <ResponsiveContainer width="100%" aspect="2">
+        <ResponsiveContainer width={200} height={200}>
         <RadarChart cx="50%" cy="50%" outerRadius="80%" data={data}>
           <PolarGrid />
           <PolarAngleAxis dataKey="subject" />
