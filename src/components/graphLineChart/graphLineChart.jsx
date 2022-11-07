@@ -1,21 +1,21 @@
-import React, { PureComponent } from 'react';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import React from 'react';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 const data = [
   {
-    name: '1',
+    name: 'Page A',
     uv: 4000,
     pv: 2400,
     amt: 2400,
   },
   {
-    name: '2',
+    name: 'Page B',
     uv: 3000,
     pv: 1398,
     amt: 2210,
   },
   {
-    name: '3',
+    name: 'Page C',
     uv: 2000,
     pv: 9800,
     amt: 2290,
@@ -46,26 +46,19 @@ const data = [
   },
 ];
 
-export default class Example extends PureComponent {
-
-  render() {
+function graphLineChart()  {
     return (
-        <ResponsiveContainer width="100%" height="100%">
-        <BarChart
-            title='Activité quotidienne'
-            width={500}
-            height={300}
-            data={data}
-        >
-          <CartesianGrid strokeDasharray="3 3" vertical={false} />
-          <XAxis axisLine={true} />
-          <YAxis axisLine={false} orientation="right"  />
-          <Tooltip />
-          <Legend verticalAlign="top" align='right' iconType="circle" iconSize={10} />
-          <Bar barSize={8} name='Poids (kg)' dataKey="pv" fill="#282D30" />
-          <Bar barSize={8} name='Calories brûlées (kCal)' dataKey="uv" fill="#E60000" />
-        </BarChart>
-      </ResponsiveContainer>
+      <LineChart width={730} height={250} data={data}
+        margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="name" />
+        <YAxis />
+        <Tooltip />
+        <Legend />
+        <Line type="monotone" dataKey="pv" stroke="#8884d8" />
+        <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
+      </LineChart>
     );
-  }
 }
+export default graphLineChart
+
