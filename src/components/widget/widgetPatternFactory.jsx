@@ -1,11 +1,11 @@
 import React from 'react';
-import Widget from '../graphWidget/widget'
+import Widget from './widget'
 import IconCalorie from '.././../assets/icon-widget-calorie.svg'
 import IconGlucide from '.././../assets/icon-widget-glucide.svg'
 import IconLipide from '.././../assets/icon-widget-lipide.svg'
 import IconProteine from '.././../assets/icon-widget-proteine.svg'
 
-function graphWidget(props) {
+function widgetPatternFactory(props) {
     if(props.widgettype === 'calories') {
         return(
             <Widget texte="Calories" chiffre="1,930kCal" icon={IconCalorie} bgcolor="lightred"/>
@@ -28,4 +28,4 @@ function graphWidget(props) {
     }
 }
 
-export default graphWidget
+export default widgetPatternFactory

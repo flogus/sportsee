@@ -1,7 +1,7 @@
 import React from 'react';
 import Title from '../title/title'
 import GraphBarChart from '../graphBarChart/graphBarChart'
-import GraphWidget from '../graphWidget/graphWidget'
+import WidgetPatternFactory from '../widget/widgetPatternFactory'
 import GraphSquareWidget from '../graphSquareWidget/graphSquareWidget'
 
 function graphics () {
@@ -20,10 +20,10 @@ function graphics () {
                     </div>
                 </div>
                 <div className='flex flex-col justify-between'>
-                    <GraphWidget widgettype="calories" chiffre="1930" texte="Calories"/>
-                    <GraphWidget widgettype="proteines" chiffre="155" texte="Proteines" />
-                    <GraphWidget widgettype="glucides" chiffre="290" texte="Glucides" />
-                    <GraphWidget widgettype="lipides" chiffre="50" texte="Lipides" />
+                    <WidgetPatternFactory widgettype="calories" chiffre="1930" texte="Calories"/>
+                    <WidgetPatternFactory widgettype="proteines" chiffre="155" texte="Proteines" />
+                    <WidgetPatternFactory widgettype="glucides" chiffre="290" texte="Glucides" />
+                    <WidgetPatternFactory widgettype="lipides" chiffre="50" texte="Lipides" />
                 </div>
             </div>
         </div>
