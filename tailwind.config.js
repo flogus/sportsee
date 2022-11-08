@@ -10,13 +10,13 @@ module.exports = {
           darkgrey: '#282D30',
           lightgrey: '#FBFBFB',
           red: '#FF0000',
-          lightred: 'rgba(255, 0, 0, 0.1)',
+          lightred: '#F9E5E4',
           blue: '#4AB8FF',
-          lightblue: 'rgba(74, 184, 255, 0.1)',
+          lightblue: '#E4F2FA',
           yellow: '#F9CE23',
-          lightyellow: 'rgba(249, 206, 35, 0.1)',
+          lightyellow: '#FAF4DF',
           pink: '#FD5181',
-          lightpink: 'rgba(253, 81, 129, 0.1)'
+          lightpink: '#F9E5EB'
       }
     },
     fontSize: {
@@ -28,5 +28,15 @@ module.exports = {
       }
     },
   },
+  safelist: [
+    'bg-seesport-red',
+    'bg-seesport-lightred',
+    'bg-seesport-blue',
+    'bg-seesport-lightblue',
+    'bg-seesport-yellow',
+    'bg-seesport-lightyellow',
+    'bg-seesport-pink',
+    'bg-seesport-lightpink'
+  ],
   plugins: [],
 }
