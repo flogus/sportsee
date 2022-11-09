@@ -15,7 +15,7 @@ function graphWidgetFactory(props) {
     if(props.graphtype === 'radar') {
         return(
             <div className={props.bgcolor + " flex basis-4/12 justify-center items-center mx-0 mb-3 lg:mx-3 lg:mb-0 rounded-md"}>
-                <GraphRadar />
+                <GraphRadar data={props.data} />
             </div>
         )
     }
