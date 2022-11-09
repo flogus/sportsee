@@ -4,10 +4,12 @@ import GraphBarChart from '../graphBarChart/graphBarChart'
 import WidgetPatternFactory from '../widget/widgetPatternFactory'
 import GraphWidgetFactory from '../graphWidgetFactory/graphWidgetFactory'
 
+
+
 function graphics () {
     return (
         <div className='flex flex-col p-10 flex-1'>
-            <Title />
+            <Title username='florian' />
             <div className='flex flex-row flex-1'>
                 <div className='flex flex-col flex-1'>
                     <div className='flex justify-center items-center mb-3 h-96'>
