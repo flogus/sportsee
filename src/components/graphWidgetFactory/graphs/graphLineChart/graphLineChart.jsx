@@ -33,16 +33,16 @@ const data = [
 ];
 
 function graphLineChart()  {
-    return (        
-          <ResponsiveContainer width="100%" height="100%">
-            <LineChart  data={data}
-              margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
-              <XAxis dataKey="name" />
-              <Tooltip />
-              <Line type="monotone" dataKey="uv" stroke="#FFFFFF" />
-            </LineChart>
-          </ResponsiveContainer>
-    );
+  return (        
+    <ResponsiveContainer width="100%" height={250}>
+      <LineChart  data={data}
+        margin={{ top: 50, right: 0, left: 0, bottom: 5 }}>
+        <XAxis dataKey="name" axisLine={false} tick={{ fontSize: 12 }} padding={{ left: 20, right: 20 }} stroke="#eeeeee" type='category' interval='preserveStartEnd' />
+        <Tooltip />
+        <Line type="monotone" dataKey="uv" stroke="#FFFFFF"/>
+      </LineChart>
+    </ResponsiveContainer>
+  );
 }
 export default graphLineChart
 

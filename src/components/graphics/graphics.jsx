@@ -2,7 +2,7 @@ import React from 'react';
 import Title from '../title/title'
 import GraphBarChart from '../graphBarChart/graphBarChart'
 import WidgetPatternFactory from '../widget/widgetPatternFactory'
-import GraphSquareWidget from '../graphSquareWidget/graphSquareWidget'
+import GraphWidgetFactory from '../graphWidgetFactory/graphWidgetFactory'
 
 function graphics () {
     return (
@@ -10,13 +10,13 @@ function graphics () {
             <Title />
             <div className='flex flex-row flex-1'>
                 <div className='flex flex-col flex-1'>
-                    <div className='flex basis-6/12 justify-center items-center p-10'>
+                    <div className='flex justify-center items-center mb-3 h-96'>
                        <GraphBarChart />
                     </div>
-                    <div className='flex basis-6/12 flex-row justify-between'>
-                        <GraphSquareWidget graphtype="bar" bgcolor="bg-seesport-red" />
-                        <GraphSquareWidget graphtype="radar" bgcolor="bg-seesport-darkgrey" />
-                        <GraphSquareWidget graphtype="circle" bgcolor="bg-seesport-lightgrey" />
+                    <div className='flex basis-6/12 flex-col lg:flex-row justify-between'>
+                        <GraphWidgetFactory graphtype="bar" bgcolor="bg-seesport-red" />
+                        <GraphWidgetFactory graphtype="radar" bgcolor="bg-seesport-darkgrey" />
+                        <GraphWidgetFactory graphtype="circle" bgcolor="bg-seesport-lightgrey" />
                     </div>
                 </div>
                 <div className='flex flex-col justify-between'>

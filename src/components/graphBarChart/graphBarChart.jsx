@@ -53,7 +53,7 @@ export default class Example extends PureComponent {
         <ResponsiveContainer height="100%">
         <BarChart
             title='Activité quotidienne'
-            width={500}
+            width="100%"
             height={300}
             data={data}
         >

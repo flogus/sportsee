@@ -5,7 +5,7 @@ function widget(props){
     return (
         <div className='mx-4 mr-0 ml-6'>
             <div className='bg-seesport-lightgrey flex p-8 rounded-md'>
-                <div className={bgcolor+" p-3 flex justify-center items-center "}>
+                <div className={bgcolor+" p-3 flex justify-center items-center rounded-md"}>
                     <img src={props.icon} alt={props.texte} className="w-5" />
                 </div>
                 <div className='flex flex-col pl-2 justify-content'>
