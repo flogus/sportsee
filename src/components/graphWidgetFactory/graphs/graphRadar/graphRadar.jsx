@@ -1,9 +1,9 @@
 import React from 'react';
-import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer } from 'recharts';
+import {
+  Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer,
+} from 'recharts';
 
-
-
-function graphRadar(props)  {
+function graphRadar(props) {
   // const data = [
   //   {
   //     "subject": 'Intensité',
@@ -33,8 +33,15 @@ function graphRadar(props)  {
 
   return (
     <ResponsiveContainer width="100%" height={250}>
-      <RadarChart cx="50%" cy="50%" outerRadius="80%" data={props.data}
-      margin={{ top: 0, right: 0, left: 0, bottom: 0 }}>
+      <RadarChart
+        cx="50%"
+        cy="50%"
+        outerRadius="80%"
+        data={props.data}
+        margin={{
+          top: 0, right: 0, left: 0, bottom: 0,
+        }}
+      >
         <PolarGrid />
         <PolarAngleAxis dataKey="subject" stroke="#FFFFFF" tick={{ fontSize: 14 }} />
         <PolarRadiusAxis tickLine={false} />
@@ -44,4 +51,4 @@ function graphRadar(props)  {
   );
 }
 
-export default graphRadar
+export default graphRadar;

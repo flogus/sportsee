@@ -1,5 +1,7 @@
 import React, { PureComponent } from 'react';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import {
+  BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer,
+} from 'recharts';
 
 const data = [
   {
@@ -47,23 +49,22 @@ const data = [
 ];
 
 export default class Example extends PureComponent {
-
   render() {
     return (
-        <ResponsiveContainer height="100%">
+      <ResponsiveContainer height="100%">
         <BarChart
-            title='Activité quotidienne'
-            width="100%"
-            height={300}
-            data={data}
+          title="Activité quotidienne"
+          width="100%"
+          height={300}
+          data={data}
         >
           <CartesianGrid strokeDasharray="3 3" vertical={false} />
-          <XAxis axisLine={true} />
-          <YAxis axisLine={false} orientation="right"  />
+          <XAxis axisLine />
+          <YAxis axisLine={false} orientation="right" />
           <Tooltip />
-          <Legend verticalAlign="top" align='right' iconType="circle" iconSize={10} />
-          <Bar barSize={8} name='Poids (kg)' dataKey="pv" fill="#282D30" />
-          <Bar barSize={8} name='Calories brûlées (kCal)' dataKey="uv" fill="#E60000" />
+          <Legend verticalAlign="top" align="right" iconType="circle" iconSize={10} />
+          <Bar barSize={8} name="Poids (kg)" dataKey="pv" fill="#282D30" />
+          <Bar barSize={8} name="Calories brûlées (kCal)" dataKey="uv" fill="#E60000" />
         </BarChart>
       </ResponsiveContainer>
     );

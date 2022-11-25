@@ -9,14 +9,14 @@ import reportWebVitals from './reportWebVitals';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <div className='flex flex-col h-full'>
+    <div className="flex flex-col h-full">
       <Nav />
-      <div className='flex flex-row flex-1 sidebar-and-graphcs'>
+      <div className="flex flex-row flex-1 sidebar-and-graphcs">
         <Sidebar />
         <Graphics />
       </div>
     </div>
-  </React.StrictMode>
+  </React.StrictMode>,
 );
 
 // If you want to start measuring performance in your app, pass a function
