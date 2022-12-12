@@ -5,47 +5,54 @@ import {
 
 const data = [
   {
-    name: 'L',
-    uv: 4000,
+    day: 'L',
+    calories: 240,
+    kilo: 500,
   },
   {
-    name: 'M',
-    uv: 4000,
+    day: 'M',
+    calories: 220,
+    kilo: 50,
   },
   {
-    name: 'M',
-    uv: 4000,
+    day: 'M',
+    calories: 280,
+    kilo: 50,
   },
   {
-    name: 'J',
-    uv: 4000,
+    day: 'J',
+    calories: 290,
+    kilo: 50,
   },
   {
-    name: 'V',
-    uv: 4000,
+    day: 'V',
+    calories: 160,
+    kilo: 50,
   },
   {
-    name: 'S',
-    uv: 3000,
+    day: 'S',
+    calories: 162,
+    kilo: 50,
   },
   {
-    name: 'D',
-    uv: 2000,
+    day: 'D',
+    calories: 390,
+    kilo: 50,
   },
 ];
 
-function graphLineChart() {
+function graphLineChart(props) {
   return (
     <ResponsiveContainer width="100%" height={250}>
       <LineChart
-        data={data}
+        data={props.data}
         margin={{
           top: 50, right: 0, left: 0, bottom: 5,
         }}
       >
-        <XAxis dataKey="name" axisLine={false} tick={{ fontSize: 12 }} padding={{ left: 20, right: 20 }} stroke="#eeeeee" type="category" interval="preserveStartEnd" />
+        <XAxis dataKey="day" axisLine={false} tick={{ fontSize: 12 }} padding={{ left: 20, right: 20 }} stroke="#eeeeee" type="category" interval="preserveStartEnd" />
         <Tooltip />
-        <Line type="monotone" dataKey="uv" stroke="#FFFFFF" />
+        <Line type="monotone" dataKey="sessionLength" stroke="#FFFFFF" />
       </LineChart>
     </ResponsiveContainer>
   );

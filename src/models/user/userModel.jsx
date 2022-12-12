@@ -6,6 +6,7 @@ import KeyData from './keyDataModel';
 class User extends React.Component {
   constructor(data) {
     super(data);
+    console.log('User',data)
     this.id = data.data.id;
     this.userInfos = new UserInfo(data.data.userInfos);
     this.todayScore = data.data.todayScore;

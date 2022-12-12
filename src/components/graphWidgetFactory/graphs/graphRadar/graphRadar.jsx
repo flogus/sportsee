@@ -4,33 +4,6 @@ import {
 } from 'recharts';
 
 function graphRadar(props) {
-  // const data = [
-  //   {
-  //     "subject": 'Intensité',
-  //     "value":200,
-  //   },
-  //   {
-  //     "subject": 'Vitesse',
-  //     "value":240,
-  //   },
-  //   {
-  //     "subject": 'Force',
-  //     "value":80,
-  //   },
-  //   {
-  //     "subject": 'Energie',
-  //     "value":80,
-  //   },
-  //   {
-  //     "subject": 'Cardio',
-  //     "value":220,
-  //   },
-  //   {
-  //     "subject": 'History',
-  //     "value":110,
-  //   }
-  // ]
-
   return (
     <ResponsiveContainer width="100%" height={250}>
       <RadarChart

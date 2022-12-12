@@ -3,16 +3,14 @@ import {
   PieChart, Pie, Sector, Cell, ResponsiveContainer,
 } from 'recharts';
 
-const data = [
-  { name: 'Group A', value: 400 },
-];
 
-function graphPie() {
+function graphPie(props) {
   return (
     <ResponsiveContainer width="100%" height={250}>
       <PieChart width="100%" height={250}>
+      <text textAnchor="middle">tedxte</text>
         <Pie
-          data={data}
+          data={props.data}
           dataKey="value"
           nameKey="name"
           startAngle={90}

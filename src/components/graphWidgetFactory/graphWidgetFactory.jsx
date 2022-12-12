@@ -4,11 +4,16 @@ import GraphLineChart from './graphs/graphLineChart/graphLineChart';
 import GraphPie from './graphs/graphPie/graphPie';
 
 function graphWidgetFactory(props) {
+  if (props.data === '') {
+    return (
+      <div></div>
+    );
+  }
   if (props.graphtype === 'bar') {
     return (
       <div className={`${props.bgcolor} flex flex-col basis-4/12 justify-center items-center mr-0 mb-3 lg:mr-3 lg:mb-0 rounded-md`}>
         <div className="px-2 pt-4 text-white opacity-60 font-medium text-lg">Durée moyenne des sessions</div>
-        <GraphLineChart />
+        <GraphLineChart data={props.data} />
       </div>
     );
   }
@@ -22,7 +27,7 @@ function graphWidgetFactory(props) {
   if (props.graphtype === 'circle') {
     return (
       <div className={`${props.bgcolor} flex basis-4/12 justify-center items-center ml-0 lg:ml-3 rounded-md`}>
-        <GraphPie />
+        <GraphPie data={props.data} />
       </div>
     );
   }

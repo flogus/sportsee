@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 class Kind extends React.Component {
   constructor(data) {
     super(data);
-    console.log('Kind Data', Object.values(data));
     this.kind = Object.values(data);
   }
 
