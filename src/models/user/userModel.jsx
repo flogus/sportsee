@@ -6,10 +6,13 @@ import KeyData from './keyDataModel';
 class User extends React.Component {
   constructor(data) {
     super(data);
-    console.log('User',data)
     this.id = data.data.id;
     this.userInfos = new UserInfo(data.data.userInfos);
-    this.todayScore = data.data.todayScore;
+    if(data.data.todayScore === undefined){
+      this.todayScore = data.data.score;
+    } else {
+      this.todayScore = data.data.todayScore;
+    }
     this.keyData = new KeyData(data.data.keyData);
   }
 
