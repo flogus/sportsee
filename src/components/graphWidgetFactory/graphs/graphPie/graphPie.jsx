@@ -17,7 +17,7 @@ function graphPie(props) {
           dataKey="value"
           nameKey="name"
           startAngle={90}
-          endAngle={180}
+          endAngle={props.data[0].value*360/100+90}
           cx="50%"
           cy="50%"
           outerRadius={93}
@@ -38,5 +38,10 @@ function graphPie(props) {
   );
 }
 
+/*
+30  > > 100
+x  >    360
 
+30*360/100
+*/
 export default graphPie;
