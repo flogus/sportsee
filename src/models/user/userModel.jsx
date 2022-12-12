@@ -34,7 +34,7 @@ class User extends React.Component {
      * @returns todayScore
      */
   getTodayScore() {
-    return this.todayScore;
+    return this.todayScore*100;
   }
 
   /**
