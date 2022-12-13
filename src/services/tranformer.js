@@ -11,7 +11,6 @@ class Transformer {
                 newActivityData.push({ kcal: element.calories, kg: element.kilogram })
             )
         );
-        console.log('newActivityData =======>', newActivityData)
         return newActivityData;
     }
     getTransformedPerformanceData() {

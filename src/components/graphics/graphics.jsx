@@ -7,7 +7,7 @@ import GraphWidgetFactory from '../graphWidgetFactory/graphWidgetFactory';
 import apiCall from "../../services/apiCall"
 
 import Transformer from '../../services/tranformer'
-import validator from '../../models/modelValidator'
+// import validator from '../../models/modelValidator'
 import UserModel from '../../models/user/userModel';
 import UserInfo from '../../models/user/userInfoModel';
 import KeyData from '../../models/user/keyDataModel';
@@ -62,9 +62,9 @@ function Graphics() {
         getLipidCount(utilisateurKeyData.getLipids())
 
         const utilisateurScore = new UserModel(data)
-        console.log('utilisateurScore',utilisateurScore.getTodayScore())
+        console.log('>> utilisateurScore :',utilisateurScore.getTodayScore())
         const scoreData = [
-            { name: 'Group A', value: utilisateurScore.getTodayScore() },
+            { name: 'Score', value: utilisateurScore.getTodayScore() },
         ];
         getScoreData(scoreData)
     })
