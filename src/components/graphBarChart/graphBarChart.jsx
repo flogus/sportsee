@@ -3,7 +3,14 @@ import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer,
 } from 'recharts';
 
-
+const CustomTooltip = ({tooltipKg,tooltipKcal}) => {
+  return (
+    <div className='p-5 text-white bg-[#E60000] border-none'>
+      <div className='pb-5'>{tooltipKg}kg</div>
+      <div className='pt-5'>{tooltipKcal}Kcal</div>
+    </div>
+  )
+}
 
 export default class GraphBarChart extends PureComponent {
   constructor(props) {
@@ -21,14 +28,10 @@ export default class GraphBarChart extends PureComponent {
           <CartesianGrid strokeDasharray="3 3" vertical={false} />
           <XAxis axisLine />
           <YAxis axisLine={false} orientation="right" />
-          <Tooltip contentStyle={{
-              background: "red",
-              color: "green",
-              fontSize: "12px",
-            }} />
+          <Tooltip content={<CustomTooltip tooltipKg="70" tooltipKcal="356" />} />
           <Legend verticalAlign="top" align="right" iconType="circle" iconSize={10} />
-          <Bar barSize={8} name="Poids (kg)" dataKey="kg" fill="#282D30" />
-          <Bar barSize={8} name="Calories brûlées (kCal)" dataKey="kcal" fill="#E60000" />
+          <Bar radius={[4, 4, 0, 0]} barSize={8} name="Poids (kg)" dataKey="kg" fill="#282D30" />
+          <Bar radius={[4, 4, 0, 0]} barSize={8} name="Calories brûlées (kCal)" dataKey="kcal" fill="#E60000"/>
         </BarChart>
       </ResponsiveContainer>
     );
