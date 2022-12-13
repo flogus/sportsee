@@ -3,43 +3,14 @@ import {
   LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer,
 } from 'recharts';
 
-const data = [
-  {
-    day: 'L',
-    calories: 240,
-    kilo: 500,
-  },
-  {
-    day: 'M',
-    calories: 220,
-    kilo: 50,
-  },
-  {
-    day: 'M',
-    calories: 280,
-    kilo: 50,
-  },
-  {
-    day: 'J',
-    calories: 290,
-    kilo: 50,
-  },
-  {
-    day: 'V',
-    calories: 160,
-    kilo: 50,
-  },
-  {
-    day: 'S',
-    calories: 162,
-    kilo: 50,
-  },
-  {
-    day: 'D',
-    calories: 390,
-    kilo: 50,
-  },
-];
+
+const CustomTooltip = ({tooltipTime}) => {
+  return (
+    <div className='p-3 bg-white border-none'>
+      {tooltipTime} min
+    </div>
+  )
+}
 
 function graphLineChart(props) {
   return (
@@ -51,7 +22,7 @@ function graphLineChart(props) {
         }}
       >
         <XAxis dataKey="day" axisLine={false} tick={{ fontSize: 12 }} padding={{ left: 20, right: 20 }} stroke="#eeeeee" type="category" interval="preserveStartEnd" />
-        <Tooltip />
+        <Tooltip content={<CustomTooltip tooltipTime="68" />} />
         <Line type="monotone" dataKey="sessionLength" stroke="#FFFFFF" />
       </LineChart>
     </ResponsiveContainer>
