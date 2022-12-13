@@ -62,7 +62,6 @@ function Graphics() {
         getLipidCount(utilisateurKeyData.getLipids())
 
         const utilisateurScore = new UserModel(data)
-        console.log('>> utilisateurScore :',utilisateurScore.getTodayScore())
         const scoreData = [
             { name: 'Score', value: utilisateurScore.getTodayScore() },
         ];
@@ -100,7 +99,6 @@ function Graphics() {
       const performanceData = new Transformer(perfData);
       performanceData.setKind(kind)
       const newPerformanceData = performanceData.getTransformedPerformanceData()
-      console.log('>> newPerformanceData <<',newPerformanceData)
       const radarData = [
         {
           subject: 'Intensité',
