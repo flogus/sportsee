@@ -1,5 +1,3 @@
-import { element } from "prop-types";
-
 class Transformer {
     constructor(data) {
         this.data = data;
