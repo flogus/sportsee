@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import Title from '../title/title';
 import GraphBarChart from '../graphBarChart/graphBarChart';
 import WidgetPatternFactory from '../widget/widgetPatternFactory';
