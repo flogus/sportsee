@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: services/tranformer.js</title>
+    <title>JSDoc: Module: tranformer</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,67 +17,101 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: services/tranformer.js</h1>
+    <h1 class="page-title">Module: tranformer</h1>
 
     
 
 
 
-    
-    <section>
-        <article>
-            <pre class="prettyprint source linenums"><code>/** @module services.tranformer */
 
-/**
- * Get input data and transform data
- * @class
- */
-class Transformer {
-    constructor(data) {
-        /**
-         * data to transform
-         * @property {data}  
-         */
-        this.data = data;
-    }
-    /**
-     * @return {newActivityData} the new activityData transform and ready for the graphic
-     * 
-     * @method 
-     */
-    getTransformedActivityData() {
-        const newActivityData = []
-        this.data.forEach(
-            element => (
-                newActivityData.push({ kcal: element.calories, kg: element.kilogram })
-            )
-        );
-        return newActivityData;
-    }
-    /**
-     * @return {newPerformanceData} the new performanceData transform and ready for the graphic
-     * @method 
-     */
-        getTransformedPerformanceData() {
-        const newPerformanceData = []
-        newPerformanceData.push(...this.data);
-        newPerformanceData.forEach((element, index) => {
-            delete element.kind
-            const categorie = this.getKind()[index][0].toUpperCase() + this.getKind()[index].slice(1);
-            element.subject = categorie
-        });
-        return newPerformanceData;
-    }
-    setKind(kind) {
-        this.kind = kind;
-    }
-    getKind() {
-        return this.kind
-    }
-}
-export default Transformer</code></pre>
-        </article>
-    </section>
+<section>
+
+<header>
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+
+        
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="services_tranformer.js.html">services/tranformer.js</a>, <a href="services_tranformer.js.html#line1">line 1</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Classes</h3>
+
+        <dl>
+            <dt><a href="services.module_tranformer-Transformer.html">Transformer</a></dt>
+            <dd></dd>
+        </dl>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
 
 
 

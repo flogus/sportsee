@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: components/graphBarChart/graphBarChart.jsx</title>
+    <title>JSDoc: Class: Transformer</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,74 +17,138 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: components/graphBarChart/graphBarChart.jsx</h1>
+    <h1 class="page-title">Class: Transformer</h1>
 
     
 
 
 
+
+<section>
+
+<header>
     
-    <section>
-        <article>
-            <pre class="prettyprint source linenums"><code>import React, { PureComponent } from 'react';
-import {
-  BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer,
-} from 'recharts';
+        <h2><span class="attribs"><span class="type-signature"></span></span>
+            <span class="ancestors"><a href="services.module_transformer.html">.transformer</a>~</span>Transformer<span class="signature">()</span><span class="type-signature"></span></h2>
+        
+            <div class="class-description">Get input data and transform data</div>
+        
+    
+</header>
 
-/**
- * CustomTooltip for the graphBarChart
- * @param {String} param tooltipKg, tooltipKcal
- * @returns {String} html
- */
-const CustomTooltip = ({tooltipKg,tooltipKcal}) => {
-  return (
-    &lt;div className='p-5 text-white bg-[#E60000] border-none'>
-      &lt;div className='pb-5'>{tooltipKg}kg&lt;/div>
-      &lt;div className='pt-5'>{tooltipKcal}Kcal&lt;/div>
-    &lt;/div>
-  )
-}
+<article>
+    <div class="container-overview">
+    
+        
 
-/**
- * Get input data and transform data
- * @class GraphBarChart
- * @constructor
- */
-export default class GraphBarChart extends PureComponent {
-  constructor(props) {
-    super(props);
-  }
-  /**
-   * 
-   * @method render
-   * @param {Object} props the object for bar chart
-   * @returns {String} the html for the bar chart
-   * @class GraphBarChart
-   */
-  render(props) {
-    return (
-      &lt;ResponsiveContainer height="100%">
-        &lt;BarChart
-          width="100%"
-          height={300}
-          data={this.props.data}
-        >
-        &lt;text x={15} y={23} fontWeight="bold">Activité quotidienne&lt;/text>
-          &lt;CartesianGrid strokeDasharray="3 3" vertical={false} />
-          &lt;XAxis axisLine />
-          &lt;YAxis axisLine={false} orientation="right" />
-          &lt;Tooltip content={&lt;CustomTooltip tooltipKg="70" tooltipKcal="356" />} />
-          &lt;Legend verticalAlign="top" align="right" iconType="circle" iconSize={10} />
-          &lt;Bar radius={[4, 4, 0, 0]} barSize={8} name="Poids (kg)" dataKey="kg" fill="#282D30" />
-          &lt;Bar radius={[4, 4, 0, 0]} barSize={8} name="Calories brûlées (kCal)" dataKey="kcal" fill="#E60000"/>
-        &lt;/BarChart>
-      &lt;/ResponsiveContainer>
-    );
-  }
-}
-</code></pre>
-        </article>
-    </section>
+    
+    <h2>Constructor</h2>
+    
+
+    
+    <h4 class="name" id="Transformer"><span class="type-signature"></span>new Transformer<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="services_transformer.js.html">services/transformer.js</a>, <a href="services_transformer.js.html#line7">line 7</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
 
 
 

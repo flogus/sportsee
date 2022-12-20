@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: components/graphBarChart/graphBarChart.jsx</title>
+    <title>JSDoc: Source: models/averageSessions/averageSessionsModel.jsx</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: components/graphBarChart/graphBarChart.jsx</h1>
+    <h1 class="page-title">Source: models/averageSessions/averageSessionsModel.jsx</h1>
 
     
 
@@ -26,63 +26,39 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import React, { PureComponent } from 'react';
-import {
-  BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer,
-} from 'recharts';
+            <pre class="prettyprint source linenums"><code>import React from 'react';
+import PropTypes from 'prop-types';
+/** @module models */
 
 /**
- * CustomTooltip for the graphBarChart
- * @param {String} param tooltipKg, tooltipKcal
- * @returns {String} html
+ * the AverageSessions Class
+ * 
+* @class AverageSessions
  */
-const CustomTooltip = ({tooltipKg,tooltipKcal}) => {
-  return (
-    &lt;div className='p-5 text-white bg-[#E60000] border-none'>
-      &lt;div className='pb-5'>{tooltipKg}kg&lt;/div>
-      &lt;div className='pt-5'>{tooltipKcal}Kcal&lt;/div>
-    &lt;/div>
-  )
+class AverageSessions extends React.Component {
+  constructor(data) {
+    super(data);
+    this.userId = data.data.userId;
+    this.sessions = data.data.sessions;
+  }
+
+  getUserId() {
+    return this.userId;
+  }
+
+  getSessions() {
+    return this.sessions;
+  }
 }
 
-/**
- * Get input data and transform data
- * @class GraphBarChart
- * @constructor
- */
-export default class GraphBarChart extends PureComponent {
-  constructor(props) {
-    super(props);
-  }
-  /**
-   * 
-   * @method render
-   * @param {Object} props the object for bar chart
-   * @returns {String} the html for the bar chart
-   * @class GraphBarChart
-   */
-  render(props) {
-    return (
-      &lt;ResponsiveContainer height="100%">
-        &lt;BarChart
-          width="100%"
-          height={300}
-          data={this.props.data}
-        >
-        &lt;text x={15} y={23} fontWeight="bold">Activité quotidienne&lt;/text>
-          &lt;CartesianGrid strokeDasharray="3 3" vertical={false} />
-          &lt;XAxis axisLine />
-          &lt;YAxis axisLine={false} orientation="right" />
-          &lt;Tooltip content={&lt;CustomTooltip tooltipKg="70" tooltipKcal="356" />} />
-          &lt;Legend verticalAlign="top" align="right" iconType="circle" iconSize={10} />
-          &lt;Bar radius={[4, 4, 0, 0]} barSize={8} name="Poids (kg)" dataKey="kg" fill="#282D30" />
-          &lt;Bar radius={[4, 4, 0, 0]} barSize={8} name="Calories brûlées (kCal)" dataKey="kcal" fill="#E60000"/>
-        &lt;/BarChart>
-      &lt;/ResponsiveContainer>
-    );
-  }
-}
-</code></pre>
+AverageSessions.propTypes = {
+  userId: PropTypes.number,
+  sessions: PropTypes.shape({
+    day: PropTypes.number,
+    sessionLength: PropTypes.number
+  }),
+};
+export default AverageSessions;</code></pre>
         </article>
     </section>
 

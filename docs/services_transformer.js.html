@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: components/graphBarChart/graphBarChart.jsx</title>
+    <title>JSDoc: Source: services/transformer.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: components/graphBarChart/graphBarChart.jsx</h1>
+    <h1 class="page-title">Source: services/transformer.js</h1>
 
     
 
@@ -26,63 +26,57 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import React, { PureComponent } from 'react';
-import {
-  BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer,
-} from 'recharts';
-
-/**
- * CustomTooltip for the graphBarChart
- * @param {String} param tooltipKg, tooltipKcal
- * @returns {String} html
- */
-const CustomTooltip = ({tooltipKg,tooltipKcal}) => {
-  return (
-    &lt;div className='p-5 text-white bg-[#E60000] border-none'>
-      &lt;div className='pb-5'>{tooltipKg}kg&lt;/div>
-      &lt;div className='pt-5'>{tooltipKcal}Kcal&lt;/div>
-    &lt;/div>
-  )
-}
+            <pre class="prettyprint source linenums"><code>/** @module services.transformer */
 
 /**
  * Get input data and transform data
- * @class GraphBarChart
- * @constructor
+ * @class
  */
-export default class GraphBarChart extends PureComponent {
-  constructor(props) {
-    super(props);
-  }
-  /**
-   * 
-   * @method render
-   * @param {Object} props the object for bar chart
-   * @returns {String} the html for the bar chart
-   * @class GraphBarChart
-   */
-  render(props) {
-    return (
-      &lt;ResponsiveContainer height="100%">
-        &lt;BarChart
-          width="100%"
-          height={300}
-          data={this.props.data}
-        >
-        &lt;text x={15} y={23} fontWeight="bold">Activité quotidienne&lt;/text>
-          &lt;CartesianGrid strokeDasharray="3 3" vertical={false} />
-          &lt;XAxis axisLine />
-          &lt;YAxis axisLine={false} orientation="right" />
-          &lt;Tooltip content={&lt;CustomTooltip tooltipKg="70" tooltipKcal="356" />} />
-          &lt;Legend verticalAlign="top" align="right" iconType="circle" iconSize={10} />
-          &lt;Bar radius={[4, 4, 0, 0]} barSize={8} name="Poids (kg)" dataKey="kg" fill="#282D30" />
-          &lt;Bar radius={[4, 4, 0, 0]} barSize={8} name="Calories brûlées (kCal)" dataKey="kcal" fill="#E60000"/>
-        &lt;/BarChart>
-      &lt;/ResponsiveContainer>
-    );
-  }
+class Transformer {
+    /**
+     * data to transform
+     * 
+     * @method constructor
+     * @property {data} the data to manipulate
+     */
+    constructor(data) {
+        this.data = data;
+    }
+    /**
+     * @method getTransformedActivityData
+     * @return {newActivityData} the new activityData transform and ready for the graphic
+     */
+    getTransformedActivityData() {
+        const newActivityData = []
+        this.data.forEach(
+            element => (
+                newActivityData.push({ kcal: element.calories, kg: element.kilogram })
+            )
+        );
+        return newActivityData;
+    }
+    /**
+     * @method getTransformedPerformanceData
+     * @return {newPerformanceData} the new performanceData transform and ready for the graphic
+     */
+        getTransformedPerformanceData() {
+        const newPerformanceData = []
+        newPerformanceData.push(...this.data);
+        newPerformanceData.forEach((element, index) => {
+            delete element.kind
+            const categorie = this.getKind()[index][0].toUpperCase() + this.getKind()[index].slice(1);
+            element.subject = categorie
+        });
+        return newPerformanceData;
+    }
+    setKind(kind) {
+        this.kind = kind;
+    }
+    getKind() {
+        return this.kind
+    }
 }
-</code></pre>
+export default Transformer</code></pre>
         </article>
     </section>
 
