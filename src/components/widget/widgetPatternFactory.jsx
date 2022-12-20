@@ -5,6 +5,12 @@ import IconGlucide from '../../assets/icon-widget-glucide.svg';
 import IconLipide from '../../assets/icon-widget-lipide.svg';
 import IconProteine from '../../assets/icon-widget-proteine.svg';
 
+/**
+ * @module widget
+ * @method widgetPatternFactory()
+ * @param {String} props 
+ * @returns html
+ */
 function widgetPatternFactory(props) {
   if (props.widgettype === 'calories') {
     return (

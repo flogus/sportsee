@@ -1,6 +1,11 @@
 import React from 'react';
 import logo from '../../assets/logo-sportsee.png';
 
+/**
+ * navigation bar
+ * @function nav()
+ * @returns navbar
+ */
 function nav() {
   return (
     <div className="bg-black text-white flex">

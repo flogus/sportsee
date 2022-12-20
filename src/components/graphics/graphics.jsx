@@ -1,9 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Title from '../title/title';
 import GraphBarChart from '../graphBarChart/graphBarChart';
 import WidgetPatternFactory from '../widget/widgetPatternFactory';
 import GraphWidgetFactory from '../graphWidgetFactory/graphWidgetFactory';
-import apiCall from "../../services/apiCall"
+
+const mock = false
+// if(mock){
+//   const apiUrl = "../../services/apiCallMock"
+// } else {
+//   const apiUrl = "../../services/apiCall"
+// }
+import apiCall from "../../services/apiCallMock"
 
 import Transformer from '../../services/tranformer'
 // import validator from '../../models/modelValidator'
@@ -14,7 +21,8 @@ import Performance from '../../models/performance/performanceModel';
 import Activity from '../../models/activity/activityModel';
 import AverageSessions from '../../models/averageSessions/averageSessionsModel';
 
-function Graphics() {
+function Graphics(mock) {
+  console.log('mock',mock)
   // User basis data
   const [firstName, getFirstName] = useState('');
   const [lastName, getLastName] = useState('');
@@ -27,7 +35,10 @@ function Graphics() {
 
   // Url - Param
   const urlElements = window.location.href.split('/');
-  const userId = (urlElements[urlElements.length - 1]);
+  const userId = 12;
+  if(!mock){
+    const userId = (urlElements[urlElements.length - 1]);
+  }
 
   // Graph data
   const [activityData, getActivitData] = useState('');
@@ -35,8 +46,8 @@ function Graphics() {
   const [radarData, getRadarData] = useState('');
   const [scoreData, getScoreData] = useState('');
 
-  const userUrl = `http://localhost:3000/user/${userId}`;
-  const performanceUrl = `http://localhost:3000/user/${userId}/performance`;
+  // const userUrl = `http://localhost:3000/user/${userId}`;
+  // const performanceUrl = `http://localhost:3000/user/${userId}/performance`;
 
   useEffect(() => {
     getUserData();
@@ -48,7 +59,7 @@ function Graphics() {
 
   // Utilisateur data et Widgets data
   const getUserData = () => {
-    const userFetchData = apiCall.getUserData(userId)
+    const userFetchData = apiCall.getUserDataApi(userId)
     userFetchData.then(data => {
         const utilisateur = new UserInfo(data.data.userInfos)
         getFirstName(utilisateur.getFirstName())
@@ -70,7 +81,7 @@ function Graphics() {
 
   // Activite quotidienne (Bars)
   const getActivityData = () => {
-    const activityFetchData = apiCall.getActivity(userId)
+    const activityFetchData = apiCall.getActivityApi(userId)
     activityFetchData.then(data => {
       const activity = new Activity(data)
       const rawData = activity.getSessions()
@@ -81,16 +92,19 @@ function Graphics() {
 
   // Durée moyenne des sessions (Courbe)
   const getAverageSessionsData = () => {
-    const averageSessionsFetchData = apiCall.getAverageSessions(userId)
+    const averageSessionsFetchData = apiCall.getAverageSessionsApi(userId)
     averageSessionsFetchData.then(data => {
       const averagesessions = new AverageSessions(data)
       getSessionsAverageData(averagesessions.getSessions())
     })
   }
 
-  // Performance data (Radar)
+  /**
+   * getPerformanceData()
+   * @description Performance data (Radar)
+   */
   const getPerformanceData = () => {
-    const performanceFetchData = apiCall.getPerfData(userId)
+    const performanceFetchData = apiCall.getPerfDataApi(userId)
     performanceFetchData.then(data => {
       const performance = new Performance(data)
       const kind = performance.getKind().kind
@@ -130,6 +144,7 @@ function Graphics() {
 
   return (
     <div className="flex flex-col p-10 flex-1">
+      {`${mock}`}
       <Title username={`${firstName} ${lastName}`} />
       <div className="flex flex-row flex-1">
         <div className="flex flex-col flex-1">

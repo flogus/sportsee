@@ -1,5 +1,11 @@
 import React from 'react';
 
+/**
+ * @module widget
+ * @method widget()
+ * @param {Objet} props 
+ * @returns html
+ */
 function widget(props) {
   const bgcolor = `bg-seesport-${props.bgcolor}`;
   return (

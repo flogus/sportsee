@@ -3,6 +3,10 @@ import PropTypes from 'prop-types';
 import UserInfo from './userInfoModel';
 import KeyData from './keyDataModel';
 
+/**
+ * User classs
+ * @class
+ */
 class User extends React.Component {
   constructor(data) {
     super(data);

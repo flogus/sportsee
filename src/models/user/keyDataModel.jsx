@@ -1,6 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+/**
+ * Keydata classs
+ * @class
+ */
 class KeyData extends React.Component {
   constructor(data) {
     super(data);

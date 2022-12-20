@@ -3,6 +3,12 @@ import GraphRadar from './graphs/graphRadar/graphRadar';
 import GraphLineChart from './graphs/graphLineChart/graphLineChart';
 import GraphPie from './graphs/graphPie/graphPie';
 
+/**
+ * graph Widget Factory
+ * @function graphWidgetFactory()
+ * @param {Object} props 
+ * @returns a div|bar chart|radar chart|circle radar
+ */
 function graphWidgetFactory(props) {
   if (props.data === '') {
     return (

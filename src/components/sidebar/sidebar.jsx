@@ -1,6 +1,11 @@
 import React from 'react';
 import GraphSquareIcon from '../graphSquareIcon/graphSquareIcon';
 
+/**
+ * side bar
+ * @function sidebar()
+ * @returns side bar
+ */
 function sidebar() {
   return (
     <div className="bg-black text-white flex flex-col py-3">

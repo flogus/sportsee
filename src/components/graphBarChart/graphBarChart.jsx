@@ -3,6 +3,12 @@ import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer,
 } from 'recharts';
 
+/**
+ * CustomTooltip for the graphBarChart
+ * @param {String} param
+ * @returns html
+ * @description return a custom tooltip
+ */
 const CustomTooltip = ({tooltipKg,tooltipKcal}) => {
   return (
     <div className='p-5 text-white bg-[#E60000] border-none'>

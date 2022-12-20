@@ -3,7 +3,12 @@ import {
   PieChart, Pie, Sector, Cell, Label ,ResponsiveContainer,
 } from 'recharts';
 
-
+/**
+ * graph Pie
+ * @function graphPie()
+ * @param {Object} props 
+ * @returns a pie chart
+ */
 function graphPie(props) {
   const middleText1 = props.data[0].value + "%"
   const middleText2 = "de votre objectif"

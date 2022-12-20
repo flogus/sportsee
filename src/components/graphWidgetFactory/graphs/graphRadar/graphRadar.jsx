@@ -3,6 +3,12 @@ import {
   Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer,
 } from 'recharts';
 
+/**
+ * graph Radar
+ * @function graphRadar()
+ * @param {Object} props 
+ * @returns a graph chart
+ */
 function graphRadar(props) {
   return (
     <ResponsiveContainer width="100%" height={250}>

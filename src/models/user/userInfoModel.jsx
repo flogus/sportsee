@@ -1,6 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+/**
+ * UserInfo Class
+ * @class
+ */
 class UserInfo extends React.Component {
   constructor(data) {
     super(data);
@@ -27,7 +31,7 @@ class UserInfo extends React.Component {
 
   /**
      *
-     * @returns age
+     * @returns (String) age
      */
   getAge() {
     return this.age;

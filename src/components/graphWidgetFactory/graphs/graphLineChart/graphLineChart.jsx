@@ -3,7 +3,12 @@ import {
   LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer,
 } from 'recharts';
 
-
+/**
+ * CustomTooltip for the lineChart
+ * @param {String} param
+ * @returns html
+ * @description return a custom tooltip
+ */
 const CustomTooltip = ({tooltipTime}) => {
   return (
     <div className='p-3 bg-white border-none'>
@@ -11,7 +16,12 @@ const CustomTooltip = ({tooltipTime}) => {
     </div>
   )
 }
-
+/**
+ * graph Line Chart
+ * @function graphLineChart()
+ * @param {Object} props the data for the line chart
+ * @returns a line chart
+ */
 function graphLineChart(props) {
   return (
     <ResponsiveContainer width="100%" height={250}>

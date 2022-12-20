@@ -2,6 +2,12 @@ import React from 'react';
 
 const capitalizeFirst = (str) => str.charAt(0).toUpperCase() + str.slice(1);
 
+/**
+ * title
+ * @function title()
+ * @param {Object} props the props with the user name
+ * @returns {String} the title with the name of the user
+ */
 function title(props) {
   return (
     <div className="flex flex-col">

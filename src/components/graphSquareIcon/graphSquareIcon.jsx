@@ -1,5 +1,10 @@
 import React from 'react';
 
+/**
+ * @method graphSquareIcon()
+ * @param {Object} props 
+ * @returns a link with the icon
+ */
 function graphSquareIcon(props) {
   const link = `#${props.categorie}`;
   const title = `Catégorie ${props.categorie}`;
