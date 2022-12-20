@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: models/user/userModel.jsx</title>
+    <title>JSDoc: Source: components/nav/nav.jsx</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: models/user/userModel.jsx</h1>
+    <h1 class="page-title">Source: components/nav/nav.jsx</h1>
 
     
 
@@ -27,66 +27,38 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>import React from 'react';
-import PropTypes from 'prop-types';
-import UserInfo from './userInfoModel';
-import KeyData from './keyDataModel';
+import logo from '../../assets/logo-sportsee.png';
 
 /**
- * User classs
- * @class
+ * navigation bar
+ * @function nav()
+ * @returns navbar
  */
-class User extends React.Component {
-  constructor(data) {
-    super(data);
-    this.id = data.data.id;
-    this.userInfos = new UserInfo(data.data.userInfos);
-    if(data.data.todayScore === undefined){
-      this.todayScore = data.data.score;
-    } else {
-      this.todayScore = data.data.todayScore;
-    }
-    this.keyData = new KeyData(data.data.keyData);
-  }
-
-  /**
-     *
-     * @returns id
-     */
-  getId() {
-    return this.id;
-  }
-
-  /**
-     *
-     * @returns userInfos
-     */
-  getUserInfos() {
-    return this.userInfos;
-  }
-
-  /**
-     *
-     * @returns todayScore
-     */
-  getTodayScore() {
-    return this.todayScore*100;
-  }
-
-  /**
-     *
-     * @returns keyData
-     */
-  getKeyData() {
-    return this.keyData;
-  }
+function nav() {
+  return (
+    &lt;div className="bg-black text-white flex">
+      &lt;div className="pl-5 py-2">
+        &lt;img className="h-12" src={logo} alt="Sport See" />
+      &lt;/div>
+      &lt;ul className="list-none flex flex-1 justify-evenly items-center">
+        &lt;li>
+          &lt;a href="accueil">Accueil&lt;/a>
+        &lt;/li>
+        &lt;li>
+          &lt;a href="Profil">Profil&lt;/a>
+        &lt;/li>
+        &lt;li>
+          &lt;a href="reglage">Réglage&lt;/a>
+        &lt;/li>
+        &lt;li>
+          &lt;a href="communaute">Communauté&lt;/a>
+        &lt;/li>
+      &lt;/ul>
+    &lt;/div>
+  );
 }
-User.propTypes = {
-  id: PropTypes.number,
-  userInfos: PropTypes.instanceOf(UserInfo),
-  todayScore: PropTypes.number,
-  keyData: PropTypes.instanceOf(KeyData),
-};
-export default User;
+
+export default nav;
 </code></pre>
         </article>
     </section>

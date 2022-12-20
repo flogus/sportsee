@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/graphics/graphics.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/graphics/graphics.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { useState, useEffect } from 'react';
+import Title from '../title/title';
+import GraphBarChart from '../graphBarChart/graphBarChart';
+import WidgetPatternFactory from '../widget/widgetPatternFactory';
+import GraphWidgetFactory from '../graphWidgetFactory/graphWidgetFactory';
+
+const mock = false
+// if(mock){
+//   const apiUrl = "../../services/apiCallMock"
+// } else {
+//   const apiUrl = "../../services/apiCall"
+// }
+import apiCall from "../../services/apiCallMock"
+
+import Transformer from '../../services/tranformer'
+// import validator from '../../models/modelValidator'
+import UserModel from '../../models/user/userModel';
+import UserInfo from '../../models/user/userInfoModel';
+import KeyData from '../../models/user/keyDataModel';
+import Performance from '../../models/performance/performanceModel';
+import Activity from '../../models/activity/activityModel';
+import AverageSessions from '../../models/averageSessions/averageSessionsModel';
+
+function Graphics(mock) {
+  console.log('mock',mock)
+  // User basis data
+  const [firstName, getFirstName] = useState('');
+  const [lastName, getLastName] = useState('');
+
+  // Widget data
+  const [calorieCount, getCalorieCount] = useState('');
+  const [proteinCount, getProteinCount] = useState('');
+  const [carbohydrateCount, getCarbohydrateCount] = useState('');
+  const [lipidCount, getLipidCount] = useState('');
+
+  // Url - Param
+  const urlElements = window.location.href.split('/');
+  const userId = 12;
+  if(!mock){
+    const userId = (urlElements[urlElements.length - 1]);
+  }
+
+  // Graph data
+  const [activityData, getActivitData] = useState('');
+  const [sessionsAverageData, getSessionsAverageData] = useState('');
+  const [radarData, getRadarData] = useState('');
+  const [scoreData, getScoreData] = useState('');
+
+  // const userUrl = `http://localhost:3000/user/${userId}`;
+  // const performanceUrl = `http://localhost:3000/user/${userId}/performance`;
+
+  useEffect(() => {
+    getUserData();
+    getActivityData();
+    getAverageSessionsData();
+    getPerformanceData();
+  }, []);
+
+
+  // Utilisateur data et Widgets data
+  const getUserData = () => {
+    const userFetchData = apiCall.getUserDataApi(userId)
+    userFetchData.then(data => {
+        const utilisateur = new UserInfo(data.data.userInfos)
+        getFirstName(utilisateur.getFirstName())
+        getLastName(utilisateur.getLastName())
+
+        const utilisateurKeyData = new KeyData(data.data.keyData)
+        getCalorieCount(utilisateurKeyData.getCalories())
+        getProteinCount(utilisateurKeyData.getProteins())
+        getCarbohydrateCount(utilisateurKeyData.getCarbohydrates())
+        getLipidCount(utilisateurKeyData.getLipids())
+
+        const utilisateurScore = new UserModel(data)
+        const scoreData = [
+            { name: 'Score', value: utilisateurScore.getTodayScore() },
+        ];
+        getScoreData(scoreData)
+    })
+  };
+
+  // Activite quotidienne (Bars)
+  const getActivityData = () => {
+    const activityFetchData = apiCall.getActivityApi(userId)
+    activityFetchData.then(data => {
+      const activity = new Activity(data)
+      const rawData = activity.getSessions()
+      const newActivityData = new Transformer(rawData)
+      getActivitData(newActivityData.getTransformedActivityData())
+    })
+  }
+
+  // Durée moyenne des sessions (Courbe)
+  const getAverageSessionsData = () => {
+    const averageSessionsFetchData = apiCall.getAverageSessionsApi(userId)
+    averageSessionsFetchData.then(data => {
+      const averagesessions = new AverageSessions(data)
+      getSessionsAverageData(averagesessions.getSessions())
+    })
+  }
+
+  /**
+   * getPerformanceData()
+   * @description Performance data (Radar)
+   */
+  const getPerformanceData = () => {
+    const performanceFetchData = apiCall.getPerfDataApi(userId)
+    performanceFetchData.then(data => {
+      const performance = new Performance(data)
+      const kind = performance.getKind().kind
+      const perfData = performance.getData()
+      const performanceData = new Transformer(perfData);
+      performanceData.setKind(kind)
+      const newPerformanceData = performanceData.getTransformedPerformanceData()
+      const radarData = [
+        {
+          subject: 'Intensité',
+          value: 200,
+        },
+        {
+          subject: 'Vitesse',
+          value: 200,
+        },
+        {
+          subject: 'Force',
+          value: 200,
+        },
+        {
+          subject: 'Energie',
+          value: 400,
+        },
+        {
+          subject: 'Cardio',
+          value: 400,
+        },
+        {
+          subject: 'History',
+          value: 400,
+        },
+      ];
+      getRadarData(newPerformanceData)
+    })
+  }
+
+  return (
+    &lt;div className="flex flex-col p-10 flex-1">
+      {`${mock}`}
+      &lt;Title username={`${firstName} ${lastName}`} />
+      &lt;div className="flex flex-row flex-1">
+        &lt;div className="flex flex-col flex-1">
+          &lt;div className="flex justify-center items-center mb-3 h-96">
+            &lt;GraphBarChart data={activityData} />
+          &lt;/div>
+          &lt;div className="flex basis-6/12 flex-col lg:flex-row justify-between">
+            &lt;GraphWidgetFactory data={sessionsAverageData} graphtype="bar" bgcolor="bg-seesport-red" />
+            &lt;GraphWidgetFactory data={radarData} graphtype="radar" bgcolor="bg-seesport-darkgrey" />
+            &lt;GraphWidgetFactory data={scoreData} graphtype="circle" bgcolor="bg-seesport-lightgrey" />
+          &lt;/div>
+        &lt;/div>
+        &lt;div className="flex flex-col justify-between">
+          &lt;WidgetPatternFactory widgettype="calories" chiffre={calorieCount} texte="Calories" />
+          &lt;WidgetPatternFactory widgettype="proteines" chiffre={proteinCount} texte="Proteines" />
+          &lt;WidgetPatternFactory widgettype="glucides" chiffre={carbohydrateCount} texte="Glucides" />
+          &lt;WidgetPatternFactory widgettype="lipides" chiffre={lipidCount} texte="Lipides" />
+        &lt;/div>
+      &lt;/div>
+    &lt;/div>
+  );
+}
+
+export default Graphics;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-api.html">api</a></li></ul><h3>Classes</h3><ul><li><a href="KeyData.html">KeyData</a></li><li><a href="Transformer.html">Transformer</a></li><li><a href="User.html">User</a></li><li><a href="UserInfo.html">UserInfo</a></li></ul><h3>Global</h3><ul><li><a href="global.html#CustomTooltip">CustomTooltip</a></li><li><a href="global.html#graphLineChart()">graphLineChart()</a></li><li><a href="global.html#graphPie()">graphPie()</a></li><li><a href="global.html#graphRadar()">graphRadar()</a></li><li><a href="global.html#graphSquareIcon()">graphSquareIcon()</a></li><li><a href="global.html#graphWidgetFactory()">graphWidgetFactory()</a></li><li><a href="global.html#nav()">nav()</a></li><li><a href="global.html#sidebar()">sidebar()</a></li><li><a href="global.html#title()">title()</a></li><li><a href="global.html#widget()">widget()</a></li><li><a href="global.html#widgetPatternFactory()">widgetPatternFactory()</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.0</a> on Tue Dec 20 2022 15:11:37 GMT+0100 (heure normale d’Europe centrale)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: models/user/userModel.jsx</title>
+    <title>JSDoc: Source: components/graphWidgetFactory/graphWidgetFactory.jsx</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: models/user/userModel.jsx</h1>
+    <h1 class="page-title">Source: components/graphWidgetFactory/graphWidgetFactory.jsx</h1>
 
     
 
@@ -27,66 +27,47 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>import React from 'react';
-import PropTypes from 'prop-types';
-import UserInfo from './userInfoModel';
-import KeyData from './keyDataModel';
+import GraphRadar from './graphs/graphRadar/graphRadar';
+import GraphLineChart from './graphs/graphLineChart/graphLineChart';
+import GraphPie from './graphs/graphPie/graphPie';
 
 /**
- * User classs
- * @class
+ * graph Widget Factory
+ * @function graphWidgetFactory()
+ * @param {Object} props 
+ * @returns a div|bar chart|radar chart|circle radar
  */
-class User extends React.Component {
-  constructor(data) {
-    super(data);
-    this.id = data.data.id;
-    this.userInfos = new UserInfo(data.data.userInfos);
-    if(data.data.todayScore === undefined){
-      this.todayScore = data.data.score;
-    } else {
-      this.todayScore = data.data.todayScore;
-    }
-    this.keyData = new KeyData(data.data.keyData);
+function graphWidgetFactory(props) {
+  if (props.data === '') {
+    return (
+      &lt;div>&lt;/div>
+    );
   }
-
-  /**
-     *
-     * @returns id
-     */
-  getId() {
-    return this.id;
+  if (props.graphtype === 'bar') {
+    return (
+      &lt;div className={`${props.bgcolor} flex flex-col basis-4/12 justify-center items-center mr-0 mb-3 lg:mr-3 lg:mb-0 rounded-md`}>
+        &lt;div className="px-2 pt-4 text-white opacity-60 font-medium text-lg">Durée moyenne des sessions&lt;/div>
+        &lt;GraphLineChart data={props.data} />
+      &lt;/div>
+    );
   }
-
-  /**
-     *
-     * @returns userInfos
-     */
-  getUserInfos() {
-    return this.userInfos;
+  if (props.graphtype === 'radar') {
+    return (
+      &lt;div className={`${props.bgcolor} flex basis-4/12 justify-center items-center mx-0 mb-3 lg:mx-3 lg:mb-0 rounded-md`}>
+        &lt;GraphRadar data={props.data} />
+      &lt;/div>
+    );
   }
-
-  /**
-     *
-     * @returns todayScore
-     */
-  getTodayScore() {
-    return this.todayScore*100;
-  }
-
-  /**
-     *
-     * @returns keyData
-     */
-  getKeyData() {
-    return this.keyData;
+  if (props.graphtype === 'circle') {
+    return (
+      &lt;div className={`${props.bgcolor} flex basis-4/12 justify-center items-center ml-0 lg:ml-3 rounded-md`}>
+        &lt;GraphPie data={props.data} />
+      &lt;/div>
+    );
   }
 }
-User.propTypes = {
-  id: PropTypes.number,
-  userInfos: PropTypes.instanceOf(UserInfo),
-  todayScore: PropTypes.number,
-  keyData: PropTypes.instanceOf(KeyData),
-};
-export default User;
+
+export default graphWidgetFactory;
 </code></pre>
         </article>
     </section>

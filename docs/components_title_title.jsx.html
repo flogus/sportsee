@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: models/user/userModel.jsx</title>
+    <title>JSDoc: Source: components/title/title.jsx</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: models/user/userModel.jsx</h1>
+    <h1 class="page-title">Source: components/title/title.jsx</h1>
 
     
 
@@ -27,66 +27,29 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>import React from 'react';
-import PropTypes from 'prop-types';
-import UserInfo from './userInfoModel';
-import KeyData from './keyDataModel';
+
+const capitalizeFirst = (str) => str.charAt(0).toUpperCase() + str.slice(1);
 
 /**
- * User classs
- * @class
+ * title
+ * @function title()
+ * @param {Object} props 
+ * @returns title
  */
-class User extends React.Component {
-  constructor(data) {
-    super(data);
-    this.id = data.data.id;
-    this.userInfos = new UserInfo(data.data.userInfos);
-    if(data.data.todayScore === undefined){
-      this.todayScore = data.data.score;
-    } else {
-      this.todayScore = data.data.todayScore;
-    }
-    this.keyData = new KeyData(data.data.keyData);
-  }
-
-  /**
-     *
-     * @returns id
-     */
-  getId() {
-    return this.id;
-  }
-
-  /**
-     *
-     * @returns userInfos
-     */
-  getUserInfos() {
-    return this.userInfos;
-  }
-
-  /**
-     *
-     * @returns todayScore
-     */
-  getTodayScore() {
-    return this.todayScore*100;
-  }
-
-  /**
-     *
-     * @returns keyData
-     */
-  getKeyData() {
-    return this.keyData;
-  }
+function title(props) {
+  return (
+    &lt;div className="flex flex-col">
+      &lt;h1 className="font-bold pb-5">
+        Bonjour
+        {' '}
+        &lt;span className="text-red-600">{capitalizeFirst(props.username)}&lt;/span>
+      &lt;/h1>
+      &lt;div>Félicitation ! Vous avez explosé vos objectifs hier 👏&lt;/div>
+    &lt;/div>
+  );
 }
-User.propTypes = {
-  id: PropTypes.number,
-  userInfos: PropTypes.instanceOf(UserInfo),
-  todayScore: PropTypes.number,
-  keyData: PropTypes.instanceOf(KeyData),
-};
-export default User;
+
+export default title;
 </code></pre>
         </article>
     </section>

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: models/user/userModel.jsx</title>
+    <title>JSDoc: Source: components/widget/widget.jsx</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: models/user/userModel.jsx</h1>
+    <h1 class="page-title">Source: components/widget/widget.jsx</h1>
 
     
 
@@ -27,66 +27,31 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>import React from 'react';
-import PropTypes from 'prop-types';
-import UserInfo from './userInfoModel';
-import KeyData from './keyDataModel';
 
 /**
- * User classs
- * @class
+ * @module widget
+ * @method widget()
+ * @param {Objet} props 
+ * @returns html
  */
-class User extends React.Component {
-  constructor(data) {
-    super(data);
-    this.id = data.data.id;
-    this.userInfos = new UserInfo(data.data.userInfos);
-    if(data.data.todayScore === undefined){
-      this.todayScore = data.data.score;
-    } else {
-      this.todayScore = data.data.todayScore;
-    }
-    this.keyData = new KeyData(data.data.keyData);
-  }
-
-  /**
-     *
-     * @returns id
-     */
-  getId() {
-    return this.id;
-  }
-
-  /**
-     *
-     * @returns userInfos
-     */
-  getUserInfos() {
-    return this.userInfos;
-  }
-
-  /**
-     *
-     * @returns todayScore
-     */
-  getTodayScore() {
-    return this.todayScore*100;
-  }
-
-  /**
-     *
-     * @returns keyData
-     */
-  getKeyData() {
-    return this.keyData;
-  }
+function widget(props) {
+  const bgcolor = `bg-seesport-${props.bgcolor}`;
+  return (
+    &lt;div className="mx-4 mr-0 ml-6">
+      &lt;div className="bg-seesport-lightgrey flex p-4 rounded-md">
+        &lt;div className={`${bgcolor} p-3 flex-initial shrink-0 justify-center items-center rounded-md flex-1`}>
+          &lt;img src={props.icon} alt={props.texte} className="w-5 min-w-min" />
+        &lt;/div>
+        &lt;div className="flex flex-col pl-2 justify-content">
+          &lt;div className="text-l font-bold">{props.chiffre}&lt;/div>
+          &lt;div className="text-xs">{props.texte}&lt;/div>
+        &lt;/div>
+      &lt;/div>
+    &lt;/div>
+  );
 }
-User.propTypes = {
-  id: PropTypes.number,
-  userInfos: PropTypes.instanceOf(UserInfo),
-  todayScore: PropTypes.number,
-  keyData: PropTypes.instanceOf(KeyData),
-};
-export default User;
+
+export default widget;
 </code></pre>
         </article>
     </section>

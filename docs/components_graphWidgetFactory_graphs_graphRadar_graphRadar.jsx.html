@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: models/user/userModel.jsx</title>
+    <title>JSDoc: Source: components/graphWidgetFactory/graphs/graphRadar/graphRadar.jsx</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: models/user/userModel.jsx</h1>
+    <h1 class="page-title">Source: components/graphWidgetFactory/graphs/graphRadar/graphRadar.jsx</h1>
 
     
 
@@ -27,67 +27,38 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>import React from 'react';
-import PropTypes from 'prop-types';
-import UserInfo from './userInfoModel';
-import KeyData from './keyDataModel';
+import {
+  Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer,
+} from 'recharts';
 
 /**
- * User classs
- * @class
+ * graph Radar
+ * @function graphRadar()
+ * @param {Object} props 
+ * @returns a graph chart
  */
-class User extends React.Component {
-  constructor(data) {
-    super(data);
-    this.id = data.data.id;
-    this.userInfos = new UserInfo(data.data.userInfos);
-    if(data.data.todayScore === undefined){
-      this.todayScore = data.data.score;
-    } else {
-      this.todayScore = data.data.todayScore;
-    }
-    this.keyData = new KeyData(data.data.keyData);
-  }
-
-  /**
-     *
-     * @returns id
-     */
-  getId() {
-    return this.id;
-  }
-
-  /**
-     *
-     * @returns userInfos
-     */
-  getUserInfos() {
-    return this.userInfos;
-  }
-
-  /**
-     *
-     * @returns todayScore
-     */
-  getTodayScore() {
-    return this.todayScore*100;
-  }
-
-  /**
-     *
-     * @returns keyData
-     */
-  getKeyData() {
-    return this.keyData;
-  }
+function graphRadar(props) {
+  return (
+    &lt;ResponsiveContainer width="100%" height={250}>
+      &lt;RadarChart
+        cx="50%"
+        cy="50%"
+        outerRadius="80%"
+        data={props.data}
+        margin={{
+          top: 0, right: 0, left: 0, bottom: 0,
+        }}
+      >
+        &lt;PolarGrid />
+        &lt;PolarAngleAxis dataKey="subject" stroke="#FFFFFF" tick={{ fontSize: 14 }} />
+        &lt;PolarRadiusAxis tickLine={false} />
+        &lt;Radar name="fullMark" dataKey="value" fill="red" fillOpacity={0.6} />
+      &lt;/RadarChart>
+    &lt;/ResponsiveContainer>
+  );
 }
-User.propTypes = {
-  id: PropTypes.number,
-  userInfos: PropTypes.instanceOf(UserInfo),
-  todayScore: PropTypes.number,
-  keyData: PropTypes.instanceOf(KeyData),
-};
-export default User;
-</code></pre>
+
+export default graphRadar;</code></pre>
         </article>
     </section>
 

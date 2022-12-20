@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: models/user/userModel.jsx</title>
+    <title>JSDoc: Source: components/widget/widgetPatternFactory.jsx</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: models/user/userModel.jsx</h1>
+    <h1 class="page-title">Source: components/widget/widgetPatternFactory.jsx</h1>
 
     
 
@@ -27,66 +27,42 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>import React from 'react';
-import PropTypes from 'prop-types';
-import UserInfo from './userInfoModel';
-import KeyData from './keyDataModel';
+import Widget from './widget';
+import IconCalorie from '../../assets/icon-widget-calorie.svg';
+import IconGlucide from '../../assets/icon-widget-glucide.svg';
+import IconLipide from '../../assets/icon-widget-lipide.svg';
+import IconProteine from '../../assets/icon-widget-proteine.svg';
 
 /**
- * User classs
- * @class
+ * @module widget
+ * @method widgetPatternFactory()
+ * @param {String} props 
+ * @returns html
  */
-class User extends React.Component {
-  constructor(data) {
-    super(data);
-    this.id = data.data.id;
-    this.userInfos = new UserInfo(data.data.userInfos);
-    if(data.data.todayScore === undefined){
-      this.todayScore = data.data.score;
-    } else {
-      this.todayScore = data.data.todayScore;
-    }
-    this.keyData = new KeyData(data.data.keyData);
+function widgetPatternFactory(props) {
+  if (props.widgettype === 'calories') {
+    return (
+      &lt;Widget texte="Calories" chiffre={`${props.chiffre}kCal`} icon={IconCalorie} bgcolor="lightred" />
+    );
   }
-
-  /**
-     *
-     * @returns id
-     */
-  getId() {
-    return this.id;
+  if (props.widgettype === 'proteines') {
+    return (
+      &lt;Widget texte="Proteines" chiffre={`${props.chiffre}g`} icon={IconProteine} bgcolor="lightblue" />
+    );
   }
-
-  /**
-     *
-     * @returns userInfos
-     */
-  getUserInfos() {
-    return this.userInfos;
+  if (props.widgettype === 'glucides') {
+    return (
+      &lt;Widget texte="Glucides" chiffre={`${props.chiffre}g`} icon={IconGlucide} bgcolor="lightyellow" />
+    );
   }
-
-  /**
-     *
-     * @returns todayScore
-     */
-  getTodayScore() {
-    return this.todayScore*100;
-  }
-
-  /**
-     *
-     * @returns keyData
-     */
-  getKeyData() {
-    return this.keyData;
+  if (props.widgettype === 'lipides') {
+    return (
+      &lt;Widget texte="Lipides" chiffre={`${props.chiffre}g`} icon={IconLipide} bgcolor="lightpink" />
+    );
   }
 }
-User.propTypes = {
-  id: PropTypes.number,
-  userInfos: PropTypes.instanceOf(UserInfo),
-  todayScore: PropTypes.number,
-  keyData: PropTypes.instanceOf(KeyData),
-};
-export default User;
+
+export default widgetPatternFactory;
 </code></pre>
         </article>
     </section>
