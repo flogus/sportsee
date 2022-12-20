@@ -5,9 +5,9 @@ import {
 
 /**
  * graph Radar
- * @function graphRadar()
- * @param {Object} props 
- * @returns a graph chart
+ * @function graphRadar
+ * @param {Object} props the object for the radar chart
+ * @returns {String} a graph chart
  */
 function graphRadar(props) {
   return (

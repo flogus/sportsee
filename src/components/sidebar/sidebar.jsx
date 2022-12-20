@@ -3,8 +3,8 @@ import GraphSquareIcon from '../graphSquareIcon/graphSquareIcon';
 
 /**
  * side bar
- * @function sidebar()
- * @returns side bar
+ * @function sidebar
+ * @returns {String} side bar
  */
 function sidebar() {
   return (

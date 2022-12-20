@@ -12,7 +12,7 @@ const mock = false
 // }
 import apiCall from "../../services/apiCallMock"
 
-import Transformer from '../../services/tranformer'
+import Transformer from '../../services/transformer'
 // import validator from '../../models/modelValidator'
 import UserModel from '../../models/user/userModel';
 import UserInfo from '../../models/user/userInfoModel';

@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+/** @module models */
 
 /**
  * UserInfo Class
+ * 
  * @class
  */
 class UserInfo extends React.Component {

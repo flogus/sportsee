@@ -5,9 +5,9 @@ import GraphPie from './graphs/graphPie/graphPie';
 
 /**
  * graph Widget Factory
- * @function graphWidgetFactory()
- * @param {Object} props 
- * @returns a div|bar chart|radar chart|circle radar
+ * @function graphWidgetFactory
+ * @param {Object} props props.data={bar|radar|circle}
+ * @returns {String} a empty div|a bar chart|a radar chart|a circle radar
  */
 function graphWidgetFactory(props) {
   if (props.data === '') {

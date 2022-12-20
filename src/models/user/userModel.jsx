@@ -2,9 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import UserInfo from './userInfoModel';
 import KeyData from './keyDataModel';
+/** @module models */
 
 /**
  * User classs
+ * 
  * @class
  */
 class User extends React.Component {

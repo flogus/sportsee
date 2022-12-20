@@ -5,9 +5,8 @@ import {
 
 /**
  * CustomTooltip for the graphBarChart
- * @param {String} param
- * @returns html
- * @description return a custom tooltip
+ * @param {String} param tooltipKg, tooltipKcal
+ * @returns {String} html
  */
 const CustomTooltip = ({tooltipKg,tooltipKcal}) => {
   return (
@@ -18,10 +17,22 @@ const CustomTooltip = ({tooltipKg,tooltipKcal}) => {
   )
 }
 
+/**
+ * Get input data and transform data
+ * @class GraphBarChart
+ * @constructor
+ */
 export default class GraphBarChart extends PureComponent {
   constructor(props) {
     super(props);
   }
+  /**
+   * 
+   * @method render
+   * @param {Object} props the object for bar chart
+   * @returns {String} the html for the bar chart
+   * @class GraphBarChart
+   */
   render(props) {
     return (
       <ResponsiveContainer height="100%">

@@ -2,9 +2,9 @@ import React from 'react';
 
 /**
  * @module widget
- * @method widget()
- * @param {Objet} props 
- * @returns html
+ * @function widget
+ * @param {Objet} props props.bgcolor, props.texte, props.chiffre
+ * @returns {String} html
  */
 function widget(props) {
   const bgcolor = `bg-seesport-${props.bgcolor}`;

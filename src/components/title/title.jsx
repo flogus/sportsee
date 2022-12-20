@@ -4,8 +4,8 @@ const capitalizeFirst = (str) => str.charAt(0).toUpperCase() + str.slice(1);
 
 /**
  * title
- * @function title()
- * @param {Object} props the props with the user name
+ * @function title
+ * @param {Object} props props.username
  * @returns {String} the title with the name of the user
  */
 function title(props) {

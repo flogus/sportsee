@@ -1,13 +1,11 @@
 import axios from 'axios'
 const userUrl = `${process.env.REACT_APP_SERVER_URL}`;
+/** @module services.api */
 
-/**
- *  @module api
- */
 export default {
     /**
-     * @method getUserDataApi()
-     * @param {Integer} userId 
+     * @method getUserDataApi
+     * @param {Integer} userId the user id
      * @returns response.data
      */
     getUserDataApi: async (userId) => {
@@ -20,8 +18,8 @@ export default {
         }
     },
     /**
-     * @method getPerfDataApi()
-     * @param {Integer} userId 
+     * @method getPerfDataApi
+     * @param {Integer} userId the user id
      * @returns response.data
      */
     getPerfDataApi: async (userId) => {
@@ -33,8 +31,8 @@ export default {
         }
     },
     /**
-     * @method getActivityApi()
-     * @param {Integer} userId 
+     * @method getActivityApi
+     * @param {Integer} userId the user id
      * @returns response.data
      */
     getActivityApi: async (userId) => {
@@ -46,8 +44,8 @@ export default {
         }
     },
     /**
-     * @method getAverageSessionsApi()
-     * @param {Integer} userId 
+     * @method getAverageSessionsApi
+     * @param {Integer} userId the user id
      * @returns response.data
      */
     getAverageSessionsApi: async (userId) => {

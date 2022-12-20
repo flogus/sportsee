@@ -5,9 +5,9 @@ import {
 
 /**
  * graph Pie
- * @function graphPie()
- * @param {Object} props 
- * @returns a pie chart
+ * @function graphPie
+ * @param {Object} props the object for the pie chart
+ * @returns {String} a pie chart
  */
 function graphPie(props) {
   const middleText1 = props.data[0].value + "%"

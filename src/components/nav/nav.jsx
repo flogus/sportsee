@@ -3,8 +3,8 @@ import logo from '../../assets/logo-sportsee.png';
 
 /**
  * navigation bar
- * @function nav()
- * @returns navbar
+ * @function nav
+ * @returns {String} navbar
  */
 function nav() {
   return (

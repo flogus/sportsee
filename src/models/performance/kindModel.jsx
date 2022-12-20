@@ -1,6 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+/** @module models */
 
+/**
+ * the Kind Class
+ * 
+ * @class Kind
+ */
 class Kind extends React.Component {
   constructor(data) {
     super(data);

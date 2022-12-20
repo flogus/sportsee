@@ -1,9 +1,9 @@
 import React from 'react';
 
 /**
- * @method graphSquareIcon()
- * @param {Object} props 
- * @returns a link with the icon
+ * @method graphSquareIcon
+ * @param {Object} props props.categorie, props.icon
+ * @returns {String} a link with the icon
  */
 function graphSquareIcon(props) {
   const link = `#${props.categorie}`;

@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+/** @module models */
 
 /**
- * Keydata classs
+ * Keydata class
+ * 
  * @class
  */
 class KeyData extends React.Component {

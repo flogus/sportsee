@@ -7,9 +7,9 @@ import IconProteine from '../../assets/icon-widget-proteine.svg';
 
 /**
  * @module widget
- * @method widgetPatternFactory()
- * @param {String} props 
- * @returns html
+ * @function widgetPatternFactory
+ * @param {String} props props.widgettype={calories|proteines|glucides|lipides}
+ * @returns {String} html
  */
 function widgetPatternFactory(props) {
   if (props.widgettype === 'calories') {

@@ -1,6 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+/** @module models */
 
+/**
+ * the AverageSessions Class
+ * 
+* @class AverageSessions
+ */
 class AverageSessions extends React.Component {
   constructor(data) {
     super(data);

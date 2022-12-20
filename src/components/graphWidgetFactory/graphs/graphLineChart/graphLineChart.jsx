@@ -5,9 +5,8 @@ import {
 
 /**
  * CustomTooltip for the lineChart
- * @param {String} param
- * @returns html
- * @description return a custom tooltip
+ * @param {String} param return a custom tooltip
+ * @returns {String} html
  */
 const CustomTooltip = ({tooltipTime}) => {
   return (
@@ -18,9 +17,9 @@ const CustomTooltip = ({tooltipTime}) => {
 }
 /**
  * graph Line Chart
- * @function graphLineChart()
- * @param {Object} props the data for the line chart
- * @returns a line chart
+ * @function graphLineChart
+ * @param {Object} props the object for the line chart
+ * @returns {String} a line chart
  */
 function graphLineChart(props) {
   return (

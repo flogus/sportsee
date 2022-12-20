@@ -1,7 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Kind from './kindModel';
+/** @module models */
 
+/**
+ * the Performance Class
+ * 
+ * @class Performance
+ */
 class Performance extends React.Component {
   constructor(data) {
     super(data);
