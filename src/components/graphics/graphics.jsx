@@ -112,39 +112,12 @@ function Graphics(mock) {
       const performanceData = new Transformer(perfData);
       performanceData.setKind(kind)
       const newPerformanceData = performanceData.getTransformedPerformanceData()
-      const radarData = [
-        {
-          subject: 'Intensité',
-          value: 200,
-        },
-        {
-          subject: 'Vitesse',
-          value: 200,
-        },
-        {
-          subject: 'Force',
-          value: 200,
-        },
-        {
-          subject: 'Energie',
-          value: 400,
-        },
-        {
-          subject: 'Cardio',
-          value: 400,
-        },
-        {
-          subject: 'History',
-          value: 400,
-        },
-      ];
       getRadarData(newPerformanceData)
     })
   }
 
   return (
     <div className="flex flex-col p-10 flex-1">
-      {`${mock}`}
       <Title username={`${firstName} ${lastName}`} />
       <div className="flex flex-row flex-1">
         <div className="flex flex-col flex-1">
