@@ -13,6 +13,11 @@ class Kind extends React.Component {
     this.kind = Object.values(data);
   }
 
+  /**
+   * 
+   * @method getKind
+   * @returns {Sting}
+   */
   getKind() {
     return this.kind;
   }

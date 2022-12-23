@@ -23,11 +23,15 @@ const CustomTooltip = ({tooltipKg,tooltipKcal}) => {
  * @constructor
  */
 export default class GraphBarChart extends PureComponent {
+  /**
+   * Constructor
+   * @param {*} props props for the constructor
+   */
   constructor(props) {
     super(props);
   }
   /**
-   * 
+   * Render
    * @method render
    * @param {Object} props the object for bar chart
    * @returns {String} the html for the bar chart

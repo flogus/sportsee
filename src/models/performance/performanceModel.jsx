@@ -16,14 +16,26 @@ class Performance extends React.Component {
     this.data = data.data.data;
   }
 
+  /**
+   * @method getUserId
+   * @returns {Number}
+   */
   getUserId() {
     return this.userId;
   }
 
+    /**
+   * @method getKind
+   * @returns {String}
+   */
   getKind() {
     return this.kind;
   }
 
+    /**
+   * @method getData
+   * @returns {Object}
+   */
   getData() {
     return this.data;
   }
