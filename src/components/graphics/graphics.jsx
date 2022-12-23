@@ -4,13 +4,17 @@ import GraphBarChart from '../graphBarChart/graphBarChart';
 import WidgetPatternFactory from '../widget/widgetPatternFactory';
 import GraphWidgetFactory from '../graphWidgetFactory/graphWidgetFactory';
 
-const mock = false
-// if(mock){
-//   const apiUrl = "../../services/apiCallMock"
-// } else {
-//   const apiUrl = "../../services/apiCall"
-// }
-import apiCall from "../../services/apiCallMock"
+const mock = true
+let apiSuffix = ""
+let apiUrl = "../../services/apiCall"
+
+if(mock){
+  apiSuffix = "Mock"
+  apiUrl = "../../services/apiCallMock"
+}
+import apiCall from "../../services/apiCall"
+// import apiCall from "../../services/apiCallMock"
+
 
 import Transformer from '../../services/transformer'
 // import validator from '../../models/modelValidator'
