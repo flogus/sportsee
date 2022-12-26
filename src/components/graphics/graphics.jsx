@@ -4,14 +4,6 @@ import GraphBarChart from '../graphBarChart/graphBarChart';
 import WidgetPatternFactory from '../widget/widgetPatternFactory';
 import GraphWidgetFactory from '../graphWidgetFactory/graphWidgetFactory';
 
-const mock = true
-let apiSuffix = ""
-let apiUrl = "../../services/apiCall"
-
-if(mock){
-  apiSuffix = "Mock"
-  apiUrl = "../../services/apiCallMock"
-}
 import apiCall from "../../services/apiCall"
 // import apiCall from "../../services/apiCallMock"
 
@@ -26,7 +18,6 @@ import Activity from '../../models/activity/activityModel';
 import AverageSessions from '../../models/averageSessions/averageSessionsModel';
 
 function Graphics(mock) {
-  console.log('mock',mock)
   // User basis data
   const [firstName, getFirstName] = useState('');
   const [lastName, getLastName] = useState('');
