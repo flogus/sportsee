@@ -30,19 +30,13 @@ function Graphics(mock) {
 
   // Url - Param
   const urlElements = window.location.href.split('/');
-  const userId = 12;
-  if(!mock){
-    const userId = (urlElements[urlElements.length - 1]);
-  }
+  const userId = (urlElements[urlElements.length - 1]);
 
   // Graph data
   const [activityData, getActivitData] = useState('');
   const [sessionsAverageData, getSessionsAverageData] = useState('');
   const [radarData, getRadarData] = useState('');
   const [scoreData, getScoreData] = useState('');
-
-  // const userUrl = `http://localhost:3000/user/${userId}`;
-  // const performanceUrl = `http://localhost:3000/user/${userId}/performance`;
 
   useEffect(() => {
     getUserData();
