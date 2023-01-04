@@ -24,6 +24,6 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 ### Users
 Testing users. There are two users with the IDs 12 and 18, so you can reach the SportSee Dashboard with :
 
-* http://localhost:3000/12
-* http://localhost:3000/18
+* http://localhost:3000/user/12
+* http://localhost:3000/user/18
 
